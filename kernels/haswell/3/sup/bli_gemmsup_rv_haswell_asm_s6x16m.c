@@ -95,14 +95,18 @@ void bli_sgemmsup_rv_haswell_asm_6x16m
              dim_t      n0,
              dim_t      k0,
        const void*      alpha,
-       const void*      a, inc_t rs_a0, inc_t cs_a0,
-       const void*      b, inc_t rs_b0, inc_t cs_b0,
+       const void*      a0, inc_t rs_a0, inc_t cs_a0,
+       const void*      b0, inc_t rs_b0, inc_t cs_b0,
        const void*      beta,
-             void*      c, inc_t rs_c0, inc_t cs_c0,
+             void*      c0, inc_t rs_c0, inc_t cs_c0,
        const auxinfo_t* data,
        const cntx_t*    cntx
      )
 {
+	float *a = (float *)a0;
+	float *b = (float *)b0;
+	float *c = (float *)c0;
+
 	uint64_t n_left = n0 % 16;
 
 	// First check whether this is a edge case in the n dimension. If so,
@@ -1131,10 +1135,10 @@ void bli_sgemmsup_rv_haswell_asm_6x12m
              dim_t      n0,
              dim_t      k0,
        const void*      alpha,
-       const void*      a, inc_t rs_a0, inc_t cs_a0,
-       const void*      b, inc_t rs_b0, inc_t cs_b0,
+       const void*      a0, inc_t rs_a0, inc_t cs_a0,
+       const void*      b0, inc_t rs_b0, inc_t cs_b0,
        const void*      beta,
-             void*      c, inc_t rs_c0, inc_t cs_c0,
+             void*      c0, inc_t rs_c0, inc_t cs_c0,
        const auxinfo_t* data,
        const cntx_t*    cntx
      )
@@ -1144,6 +1148,10 @@ void bli_sgemmsup_rv_haswell_asm_6x12m
 
 	// Typecast local copies of integers in case dim_t and inc_t are a
 	// different size than is expected by load instructions.
+	float *a = (float *)a0;
+	float *b = (float *)b0;
+	float *c = (float *)c0;
+
 	uint64_t k_iter = k0 / 4;
 	uint64_t k_left = k0 % 4;
 
@@ -1998,10 +2006,10 @@ void bli_sgemmsup_rv_haswell_asm_6x8m
              dim_t      n0,
              dim_t      k0,
        const void*      alpha,
-       const void*      a, inc_t rs_a0, inc_t cs_a0,
-       const void*      b, inc_t rs_b0, inc_t cs_b0,
+       const void*      a0, inc_t rs_a0, inc_t cs_a0,
+       const void*      b0, inc_t rs_b0, inc_t cs_b0,
        const void*      beta,
-             void*      c, inc_t rs_c0, inc_t cs_c0,
+             void*      c0, inc_t rs_c0, inc_t cs_c0,
        const auxinfo_t* data,
        const cntx_t*    cntx
      )
@@ -2011,6 +2019,10 @@ void bli_sgemmsup_rv_haswell_asm_6x8m
 
 	// Typecast local copies of integers in case dim_t and inc_t are a
 	// different size than is expected by load instructions.
+	float *a = (float *)a0;
+	float *b = (float *)b0;
+	float *c = (float *)c0;
+
 	uint64_t k_iter = k0 / 4;
 	uint64_t k_left = k0 % 4;
 
@@ -2711,10 +2723,10 @@ void bli_sgemmsup_rv_haswell_asm_6x6m
              dim_t      n0,
              dim_t      k0,
        const void*      alpha,
-       const void*      a, inc_t rs_a0, inc_t cs_a0,
-       const void*      b, inc_t rs_b0, inc_t cs_b0,
+       const void*      a0, inc_t rs_a0, inc_t cs_a0,
+       const void*      b0, inc_t rs_b0, inc_t cs_b0,
        const void*      beta,
-             void*      c, inc_t rs_c0, inc_t cs_c0,
+             void*      c0, inc_t rs_c0, inc_t cs_c0,
        const auxinfo_t* data,
        const cntx_t*    cntx
      )
@@ -2724,6 +2736,10 @@ void bli_sgemmsup_rv_haswell_asm_6x6m
 
 	// Typecast local copies of integers in case dim_t and inc_t are a
 	// different size than is expected by load instructions.
+	float *a = (float *)a0;
+	float *b = (float *)b0;
+	float *c = (float *)c0;
+
 	uint64_t k_iter = k0 / 4;
 	uint64_t k_left = k0 % 4;
 
@@ -3457,10 +3473,10 @@ void bli_sgemmsup_rv_haswell_asm_6x4m
              dim_t      n0,
              dim_t      k0,
        const void*      alpha,
-       const void*      a, inc_t rs_a0, inc_t cs_a0,
-       const void*      b, inc_t rs_b0, inc_t cs_b0,
+       const void*      a0, inc_t rs_a0, inc_t cs_a0,
+       const void*      b0, inc_t rs_b0, inc_t cs_b0,
        const void*      beta,
-             void*      c, inc_t rs_c0, inc_t cs_c0,
+             void*      c0, inc_t rs_c0, inc_t cs_c0,
        const auxinfo_t* data,
        const cntx_t*    cntx
      )
@@ -3470,6 +3486,10 @@ void bli_sgemmsup_rv_haswell_asm_6x4m
 
 	// Typecast local copies of integers in case dim_t and inc_t are a
 	// different size than is expected by load instructions.
+	float *a = (float *)a0;
+	float *b = (float *)b0;
+	float *c = (float *)c0;
+
 	uint64_t k_iter = k0 / 4;
 	uint64_t k_left = k0 % 4;
 
@@ -4126,10 +4146,10 @@ void bli_sgemmsup_rv_haswell_asm_6x2m
              dim_t      n0,
              dim_t      k0,
        const void*      alpha,
-       const void*      a, inc_t rs_a0, inc_t cs_a0,
-       const void*      b, inc_t rs_b0, inc_t cs_b0,
+       const void*      a0, inc_t rs_a0, inc_t cs_a0,
+       const void*      b0, inc_t rs_b0, inc_t cs_b0,
        const void*      beta,
-             void*      c, inc_t rs_c0, inc_t cs_c0,
+             void*      c0, inc_t rs_c0, inc_t cs_c0,
        const auxinfo_t* data,
        const cntx_t*    cntx
      )
@@ -4139,6 +4159,10 @@ void bli_sgemmsup_rv_haswell_asm_6x2m
 
 	// Typecast local copies of integers in case dim_t and inc_t are a
 	// different size than is expected by load instructions.
+	float *a = (float *)a0;
+	float *b = (float *)b0;
+	float *c = (float *)c0;
+
 	uint64_t k_iter = k0 / 4;
 	uint64_t k_left = k0 % 4;
 
